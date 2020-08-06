@@ -1,65 +1,41 @@
-  <?php
-    include('header.php');
-    require('includes/search.php')
-  ?>
+<?php
+include('header.php');
+require('includes/search.php')
+?>
 
-  <!-- Section: Slider -->
-  <section class="slider">
-    <ul class="slides">
-      <li>
-        <img src="img/watch.jpg">
-        <!-- random image -->
-        <div class="caption center-align">
-          <h2>Find your ideal product</h2>
-          <h5 class="light grey-text text-lighten-3 hide-on-small-only">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, provident eos dicta unde debitis</h5>
-        </div>
-      </li>
-      <li>
-        <img src="img/headphones.jpg">
-        <!-- random image -->
-        <div class="caption left-align">
-          <h2>We sell your items for Budget prices</h2>
-          <h5 class="light grey-text text-lighten-3 hide-on-small-only">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus delectus inventore neque impedit</h5>
-        </div>
-      </li>
-      <li>
-        <img src="img/drone1.jpg">
-        <!-- random image -->
-        <div class="caption right-align">
-          <h2>Group deals & Individual adverts</h2>
-          <h5 class="light grey-text text-lighten-3 hide-on-small-only">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ipsum molestias excepturi doloremque</h5>
-        </div>
-      </li>
-    </ul>
-  </section>
-
-  <!-- Section: Search -->
-  <section id="search" class="section section-search teal darken-1 white-text center scrollspy">
-    <div class="container">
-      <div class="row">
-        <div class="col s12">
-          <h3>Search specific products</h3>
-
-            <form action="result.php" method="get" id="search">
-        <select name="category">
-          <option value="">Choose category...</option>
-          
-            <?php
-            echo displayCategories($cat);
-            ?>
-          
-        </select>
-        
-        <input type="search" name="q"  placeholder="Enter your keywords..." value="<?php echo $q; ?>"><button class="btn waves-effect waves-light" type="submit">Search</button>
-       
-    </form>
-        </div>
+<!-- Section: Slider -->
+<section class="slider">
+  <ul class="slides">
+    <li>
+      <img src="img/watch.jpg">
+      <!-- random image -->
+      <div class="caption center-align">
+        <h2>Find your ideal product</h2>
+        <h5 class="light grey-text text-lighten-3 hide-on-small-only">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, provident eos dicta unde debitis</h5>
       </div>
-    </div>
-  </section>
+    </li>
+    <li>
+      <img src="img/headphones.jpg">
+      <!-- random image -->
+      <div class="caption left-align">
+        <h2>We sell your items for Budget prices</h2>
+        <h5 class="light grey-text text-lighten-3 hide-on-small-only">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus delectus inventore neque impedit</h5>
+      </div>
+    </li>
+    <li>
+      <img src="img/drone1.jpg">
+      <!-- random image -->
+      <div class="caption right-align">
+        <h2>Group deals & Individual adverts</h2>
+        <h5 class="light grey-text text-lighten-3 hide-on-small-only">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ipsum molestias excepturi doloremque</h5>
+      </div>
+    </li>
+  </ul>
+</section>
 
-  <!-- Section: Icon Boxes -->
-  <section class="section section-icons grey lighten-4 center">
+
+<!-- Section: Icon Boxes -->
+<!--section class="section section-icons grey lighten-4 center">
     <div class="container">
       <div class="row">
         <div class="col s12 m4">
@@ -86,59 +62,59 @@
         </div>
       </div>
     </div>
-  </section>
-  
-  
+  </section-->
 
-  <!-- Section: Popular Products -->
-  <section id="popular" class="section section-popular scrollspy">
-    <div class="container">
-      <div class="row">
-        <h4 class="center">
-          <span class="teal-text">Popular</span> Deals</h4>
-         
-        
-          <?php
-            echo $adverts;
-           ?>
-     
-      </div>
+
+
+<!-- Section: Popular Products -->
+<section id="popular" class="section section-popular scrollspy">
+  <div class="container">
+    <div class="row">
+      <h4 class="center">
+        <span class="teal-text">Popular</span> Deals</h4>
+
+
+      <?php
+      echo $adverts;
+      ?>
+
     </div>
-  </section>
-  
-  <!-- Section: Icon Boxes2 -->
-  <section class="section section-icons grey lighten-4 center">
-    <div class="container">
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="card-panel">
-            <i class="material-icons large teal-text">store
-</i>
-            <h4>Place your order- Add to your cart</h4>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, tempore?</p>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card-panel">
-            <i class="material-icons large teal-text">feedback</i>
-            <h4>Advert templates</h4>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, tempore?</p>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card-panel">
-            <i class="material-icons large teal-text">dashboard</i>
-			
-            <h4>Create your own ad style</h4>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, tempore?</p>
-          </div>
+  </div>
+</section>
+
+<!-- Section: Icon Boxes2 -->
+<section class="section section-icons grey lighten-4 center">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m4">
+        <div class="card-panel">
+          <i class="material-icons medium teal-text">fingerprint
+          </i>
+          <h4>Secure</h4>
+          <!--p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, tempore?</p-->
         </div>
       </div>
-    </div>
-  </section>
+      <div class="col s12 m4">
+        <div class="card-panel">
+          <i class="material-icons medium teal-text">touch_app</i>
+          <h4>Easy to use</h4>
+          <!--p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, tempore?</p-->
+        </div>
+      </div>
+      <div class="col s12 m4">
+        <div class="card-panel">
+          <i class="material-icons medium teal-text">place</i>
 
-  <!-- Section: Follow -->
-  <section class="section section-follow teal darken-2 white-text center">
+          <h4>anywhere</h4>
+          <!--p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, tempore?</p-->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section: Follow -->
+<!--section class="section section-follow teal darken-2 white-text center">
     <div class="container">
       <div class="row">
         <div class="col s12">
@@ -162,12 +138,12 @@
         </div>
       </div>
     </div>
-  </section>
+  </section-->
 
-  <!-- Section: Gallery-lightbox material plugin-variation on  scrollspy -->
-  <!-- Section: 4 3 -column divs -->
-  <section id="gallery" class="section section-gallery scrollspy">
-    <div class="container">
+<!-- Section: Gallery-lightbox material plugin-variation on  scrollspy -->
+<!-- Section: 4 3 -column divs -->
+<section id="gallery" class="section section-gallery scrollspy">
+  <!--div class="container">
       <h4 class="center">
         <span class="teal-text">Product</span> Gallery
       </h4>
@@ -185,7 +161,6 @@
           <img src="https://source.unsplash.com/1600x900/?vinyl" alt="" class="materialboxed responsive-img">
         </div>
       </div>
-
       <div class="row">
         <div class="col s12 m3">
           <img src="https://source.unsplash.com/1600x900/?bass" alt="" class="materialboxed responsive-img">
@@ -200,7 +175,6 @@
           <img src="https://source.unsplash.com/1600x900/?computers" alt="" class="materialboxed responsive-img">
         </div>
       </div>
-
       <div class="row">
         <div class="col s12 m3">
           <img src="https://source.unsplash.com/1600x900/?drum" alt="" class="materialboxed responsive-img">
@@ -215,11 +189,11 @@
           <img src="https://source.unsplash.com/1600x900/?books" alt="" class="materialboxed responsive-img">
         </div>
       </div>
-    </div>
-  </section>
+    </div-->
+</section>
 
-  <!-- Section: Contact -->
-  <section id="contact" class="section section-contact scrollspy">
+<!-- Section: Contact -->
+<!--section id="contact" class="section section-contact scrollspy">
     <div class="container">
       <div class="row">
         <div class="col s12 m6">
@@ -259,12 +233,8 @@
         </div>
       </div>
     </div>
-  </section>
+  </section-->
 
-  <?php
-    include ('footer.php');
-  ?>
-
- 
-
- 
+<?php
+include('footer.php');
+?>

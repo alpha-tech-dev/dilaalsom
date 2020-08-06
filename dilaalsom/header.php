@@ -16,6 +16,18 @@ include 'includes/function.php';
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script data-ad-client="ca-pub-9687196717745782" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
+  <!-- offline material -->
+  <!--link rel="stylesheet" href="css/material/css/materialize.min.css">
+  
+  <script type="text/javascrip">
+    src="css/material/js/materialize.min.js"
+  </script-->
+
+  <!-- addition for materialize js and jquery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+  </script>
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144042688-3"></script>
   <script>
@@ -64,18 +76,38 @@ include 'includes/function.php';
             <i class="material-icons">menu</i>
           </a>
           <ul class="right hide-on-med-and-down">
+
+
+            <li class="lighten-2">
+              <form>
+                <div class="input-field ">
+                  <input class="search-input" id="search" type="search" name="q" placeholder="Search..">
+                  <label class="label-icon" for="search-input"><i class="material-icons">search</i></label>
+                </div>
+              </form>
+            </li>
+            <!--li>
+		    	<select name="category">
+          		  <option value=""><i class="material-icons"></i></option>
+          
+				  <?php
+          echo displayCategories($cat);
+          ?>
+				  
+				</select>
+		    </li-->
+
             <li>
               <a href="index.php">Home</a>
             </li>
             <li>
-              <a href="#search">Search Items</a>
-            </li>
-            <li>
               <a href="#contact">Contact Us</a>
             </li>
-            <?php
-            if (isset($_SESSION["firstname"])) {
-              $buttons = "<li>
+            <li>
+
+              <?php
+              if (isset($_SESSION["firstname"])) {
+                $buttons = "<li>
                                 <a href='adform.php'>Place an advert</a>
                              </li> 
                                    <li> <a class='dropdown-trigger' href='#' data-target='dropdown1'>
@@ -90,21 +122,34 @@ include 'includes/function.php';
                                 <a href='logout.php'>Logout</a>
                               </li>
                               ";
-            } else {
-              $buttons = "<li>
+              } else {
+                $buttons = "<li>
                                 <a href='login.php'>Login</a>
                               </li>
                               <li>
                                 <a href='signup.php'>Sign Up</a>
                               </li>";
-            }
-            echo $buttons;
-            ?>
+              }
+              echo $buttons;
+              ?>
 
+            </li>
+            <!--search dropdown->
+            <div class="dropdown-content" id="dropdown-1">
+            
+             <input type="text" placeholder="Search..">
+             <button type="submit" value="search">
+			
+			</div>
+			<li>
+			  <a class="dropdown-button" href="#" data-activates="dropdown-1"><i class="material-icons">search</i></a>
+			</li>
+			<!-- end of search-->
           </ul>
         </div>
       </div>
     </nav>
+
   </div>
   <ul class="sidenav" id="mobile-nav">
     <li>
@@ -145,3 +190,38 @@ include 'includes/function.php';
       <a href="#contact">Contact Us</a>
     </li>
   </ul>
+
+
+
+  <!-- Section: Search -->
+  <!--section id = "search"-->
+  <!-- id="search" class="section section-search teal darken-1 white-text center scrollspy" -->
+  <div class="container dropdown-content" id="dropdown">
+    <div class="row">
+      <div class="col s12 m12">
+
+        <form action="result.php" method="get" id="search" class="">
+          <div class="row">
+            <h4>Search specific products</h4>
+            <div class="col m4 s4" style="height: 10px">
+              <select name="category">
+                <option value="">Category...</option>
+
+                <?php
+                echo displayCategories($cat);
+                ?>
+
+              </select>
+            </div>
+            <div class="col m4 s7" style="height: 10px">
+              <input type="search" name="q" placeholder="Enter your keywords..." value="<?php echo $q; ?>">
+            </div>
+            <div class="col s1 m1">
+              <button class="btn waves-effect waves-light s12 m1" type="submit"><i class="material-icons">search</i></button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--/section-->
