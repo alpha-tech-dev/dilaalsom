@@ -11,23 +11,23 @@ require('includes/search.php')
       <!-- random image -->
       <div class="caption center-align">
         <h2>Find your ideal product</h2>
-        <h5 class="light grey-text text-lighten-3 hide-on-small-only">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, provident eos dicta unde debitis</h5>
+        <h5 class="light grey-text text-lighten-3 hide-on-small-only"> Find your ideal product Find your ideal product</h5>
       </div>
     </li>
     <li>
       <img src="img/headphones.jpg">
       <!-- random image -->
       <div class="caption left-align">
-        <h2>We sell your items for Budget prices</h2>
-        <h5 class="light grey-text text-lighten-3 hide-on-small-only">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus delectus inventore neque impedit</h5>
+        <h2>Easily place an Advertisment of your product</h2>
+        <h5 class="light grey-text text-lighten-3 hide-on-small-only">Easily place an Advertisment of your productEasily place an Advertisment of your product</h5>
       </div>
     </li>
     <li>
-      <img src="img/drone1.jpg">
+      <img src="img/somali.png">
       <!-- random image -->
       <div class="caption right-align">
-        <h2>Group deals & Individual adverts</h2>
-        <h5 class="light grey-text text-lighten-3 hide-on-small-only">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ipsum molestias excepturi doloremque</h5>
+        <h2>Largest advertisment plateform in Somali</h2>
+        <h5 class="light grey-text text-lighten-3 hide-on-small-only"></h5>Largest advertisment plateform in somali>Largest advertisment plateform in somali</h5>
       </div>
     </li>
   </ul>
@@ -82,7 +82,7 @@ require('includes/search.php')
   </div>
 </section>
 
-<!-- Section: Icon Boxes2 -->
+<!-- Section: Icon Boxes2 
 <section class="section section-icons grey lighten-4 center">
   <div class="container">
     <div class="row">
@@ -91,14 +91,14 @@ require('includes/search.php')
           <i class="material-icons medium teal-text">fingerprint
           </i>
           <h4>Secure</h4>
-          <!--p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, tempore?</p-->
+          <!--p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, tempore?</p
         </div>
       </div>
       <div class="col s12 m4">
         <div class="card-panel">
           <i class="material-icons medium teal-text">touch_app</i>
           <h4>Easy to use</h4>
-          <!--p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, tempore?</p-->
+          <!--p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, tempore?</p
         </div>
       </div>
       <div class="col s12 m4">
@@ -107,11 +107,11 @@ require('includes/search.php')
 
           <h4>anywhere</h4>
           <!--p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, tempore?</p-->
-        </div>
+<!--  </div>
       </div>
     </div>
-  </div>
-</section>
+  </div> 
+</section> -->
 
 <!-- Section: Follow -->
 <!--section class="section section-follow teal darken-2 white-text center">
