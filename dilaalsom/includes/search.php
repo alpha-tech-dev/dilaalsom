@@ -27,7 +27,7 @@ if (mysqli_num_rows($result) < 1) {
 } else {
 	$adverts = "";
 	while ($row = mysqli_fetch_array($result)) {
-		$adverts .= ' 	<div class="col s12 m4">
+		$adverts .= ' 	<div class="col s12 m3">
 						<div class="card small">
 							<span class=""> ' . $row["title"] . '</span>
 						  <div class="card-image">
