@@ -31,7 +31,7 @@ if (mysqli_num_rows($result) < 1) {
 						<div class="card small">
 							<span class=""> ' . $row["title"] . '</span>
 						  <div class="card-image">
-						  <img src="/dilaalsom/img/products/' . $row["images"] . '">
+						  <img src="/dilaalsom/img/products/' . $row["last_id"] . '/' . $row["images"] . '">
 
               			</div>
 						  <div class="card-content">
