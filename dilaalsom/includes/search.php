@@ -28,14 +28,15 @@ if (mysqli_num_rows($result) < 1) {
 	$adverts = "";
 	while ($row = mysqli_fetch_array($result)) {
 		$adverts .= ' 	<div class="col s12 m3">
-						<div class="card small">
+						<div class="card">
 							<span class=""> ' . $row["title"] . '</span>
-						  <div class="card-image">
-						  <img src="/dilaalsom/img/products/' . $row["last_id"] . '/' . $row["images"] . '">
-
-              			</div>
+						   <div class="card-image">
+						   <img  height="250" src="/dilaalsom/img/products/' . $row["last_id"] . '/' . $row["images"] . '" >
+						  </div>
+						  
+						  
 						  <div class="card-content">
-               				<div class="price">€ ' . $row["price"] . '</div>
+               				<div class="price"> Price: $' . $row["price"] . '</div>
 							<div class="state">State: ' . $row["state"] . '</div>	
 							<div class="district">District: ' . $row["district"] . '</div>	
               			</div>
