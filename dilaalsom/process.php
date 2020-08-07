@@ -20,6 +20,7 @@
 
 			case "signup":
 				$firstname 	= addslashes($_POST["firstname"]);
+				$phone 	= addslashes($_POST["phone"]);
 				$lastname 	= addslashes($_POST["lastname"]);
 				$email 		= addslashes($_POST["email"]);
 				$password 	= addslashes($_POST["password"]);
@@ -27,7 +28,7 @@
 				$date = date('Y-m-d H:i:s');
 
 
-				signUp($firstname, $lastname, $email, $password, $county, $date);
+				signUp($firstname, $phone, $lastname, $email, $password, $county, $date);
 				break;
 
 			case "profile":
@@ -103,9 +104,6 @@
 			case "adform":
 
 				//	$target_dir	=	"img/products/";
-
-
-
 				$output_dir = "img/products/";/* Path for file upload */
 				$fileCount = count($_FILES["mainpicture"]['name']);
 				$last_id = rand();
@@ -172,17 +170,21 @@
 	}
 
 
-	function signUp($firstname, $lastname, $email, $password, $county, $date)
+	function signUp($firstname, $phone, $lastname, $email, $password, $county, $date)
 	{
 		global $link;
 		$query = "INSERT INTO users 
-						(firstname, lastname, email, password, id_county, date_registered) 
+						(firstname, phone, lastname, email, password, id_county, created_at ) 
 						VALUES
-						('" . $firstname . "', '" . $lastname . "', '" . $email . "', '" . $password . "', '" . $county . "', '" . $date . "');";
+						('" . $firstname . "','" . $phone . "', '" . $lastname . "', '" . $email . "', '" . $password . "', '" . $county . "', '" . $date . "');";
 
 		mysqli_query($link, $query);
-		echo $query;
-		header("location: confirmation.php");
+		if (!mysqli_query($link, $query)) {
+			//echo "error:" . mysqli_error($link);
+		} else {
+			echo "Sign up sucessfull please login";
+			header("location: confirmation.php");
+		}
 		#print_r($query);
 	}
 
@@ -204,18 +206,39 @@
 
 		global $link;
 		$query = "INSERT INTO advertisements
-						(title, last_id, price,description, district,state,  images, id_category, id_user, phone,
-						email, ad_type, date_posted) 
+						(title, last_id, price,description, district,location,  main_picture, id_category, id_user,  contact_byphone,
+						message_center, ad_type, date_posted) 
 						VALUES
 						('" . $title . "','" . $last_id . "', '" . $price . "', '" . $description . "', '" . $district . "', 
-						'" . $state . "', '" . $filename . "', '" . $id_category . "', '" . $_SESSION["id"] . "', '" . $contact_byphone . "', '" . $message_center . "', '" . $ad_type . "',now());";
+						'" . $state . "', '" . $filename . "', '" . $id_category . "', '" . $_SESSION["id_user"] . "', '" . $contact_byphone . "', '" . $message_center . "', '" . $ad_type . "',now());";
 
 		mysqli_query($link, $query);
-		echo $query;
+
+		$id = $last_id;
+		$imagesDirectory = dirname("img/products/$id/ ");
+		$queryupd1 = "";
+		if (file_exists($imagesDirectory)) {
+			$i = 1;
+			$imagesDirector = scandir($imagesDirectory);
+			foreach ($imagesDirector as $file) {
+
+				if ($file !== '.' && $file !== '..') {
+					//	echo $imagesDirectory, $file, '-----------';
+					//$queryupd1	=	"UPDATE advertisements SET picture$i = $file WHERE id = $idadvert;";
+					//echo $file;
+					$queryupd1	=	"UPDATE `advertisements` SET `picture$i` = '$file' WHERE `advertisements`.`last_id` = $last_id";
+					$i = $i + 1;
+					mysqli_query($link, $queryupd1);
+					//echo $queryupd1;
+					//echo '<img  height="200" src="', $imagesDirectory, '/', $file, '" alt="Picture" >';
+				}
+			}
+		} else
+			echo ("error :" . mysqli_error($link));
 
 
 		#echo($query);
-		//	header("location:index.php");
+		header("location:index.php");
 	}
 
 
@@ -238,7 +261,7 @@
 			$_SESSION["phone"]				= $row["phone"];
 			$_SESSION["county"]		= $row["county"];
 			$_SESSION["id_county"]		= $row["id_county"];
-			$_SESSION["id"]		= $row["id"];
+			$_SESSION["id_user"]		= $row["id_user"];
 			$_SESSION["profile_pic"]		= $row["profile_pic"];
 
 

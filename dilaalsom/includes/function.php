@@ -5,7 +5,7 @@
 function displayCounties($countysel)
 {
 	global $link;
-	$query = "SELECT * FROM locations;";
+	$query = "SELECT * FROM counties;";
 	$result = mysqli_query($link, $query);
 
 	$content = "";
@@ -16,16 +16,17 @@ function displayCounties($countysel)
 	#exit();
 
 	while ($row = mysqli_fetch_array($result)) {
-		if ($countysel == $row["id"]) {
+		if ($countysel == $row["id_county"]) {
 			$selected = "selected='selected' ";
 		} else {
 			$selected = "";
 		}
 
-		$content .= "<option value='" . $row["id"] . "' " . $selected . ">" . $row["name"] . "</option>";
+		$content .= "<option value='" . $row["id_county"] . "' " . $selected . ">" . $row["county"] . "</option>";
 	}
 	return $content;
 }
+
 
 function displayCategories($cat)
 {
@@ -41,13 +42,13 @@ function displayCategories($cat)
 	#exit();
 
 	while ($row = mysqli_fetch_array($result)) {
-		if ($cat == $row["id"]) {
+		if ($cat == $row["id_category"]) {
 			$selected = "selected='selected' ";
 		} else {
 			$selected = "";
 		}
 
-		$content .= "<option value='" . $row["id"] . "' " . $selected . ">" . $row["name"] . "</option>";
+		$content .= "<option value='" . $row["id_category"] . "' " . $selected . ">" . $row["category"] . "</option>";
 	}
 	return $content;
 }
@@ -69,69 +70,57 @@ function showAdvert($idadvert)
 	global $link;
 	$queryupd	=	"UPDATE advertisements SET 
 								ad_views = (ad_views+1)
-								WHERE id = '$idadvert';";
+								WHERE id_advert = '$idadvert';";
 	mysqli_query($link, $queryupd);
+	//echo "error:" . mysqli_error($link);
+
 	###############################################
 
 
+	//	mysqli_query($link, $queryupd);
+	###############################################
 
-	$query2 = "SELECT * FROM advertisements WHERE id = '$idadvert';";
+	$query2 = "SELECT * FROM advertisements WHERE id_advert = '$idadvert';";
 
 	$result2 = mysqli_query($link, $query2);
 	$row2 = mysqli_fetch_array($result2);
 
-	$email =  $_SESSION["email"];
-	$query3 = "SELECT * FROM users WHERE email = '$email';";
+	//$email =  $_SESSION["email"];
+
+	$query3 = "SELECT * FROM advertisements WHERE id_advert = '$idadvert';";
+	$result3 = mysqli_query($link, $query3);
+	$row3 = mysqli_fetch_array($result3);
+	$id_user = $row3["id_user"];
+	//echo $id_user;
+
+	$query3 = "SELECT * FROM users WHERE id_user  = '$id_user';";
 	$result3 = mysqli_query($link, $query3);
 	$row3 = mysqli_fetch_array($result3);
 
+
 	$id = $row2["last_id"];
-	$imagesDirectory = "/dilaalsom/img/products/$id";
 
-	echo $imagesDirectory;
-	//if (is_dir("$imagesDirectory")) {
-	$opendirectory = opendir($imagesDirectory);
-	//if (is_dir($opendirectory)) {
-	if (!file_exists($opendirectory)) {
-
-		while (($image = readdir($opendirectory)) !== false) {
-			if (($image == '.') || ($image == '..')) {
-				continue;
-			}
-
-			$imgFileType = pathinfo($image, PATHINFO_EXTENSION);
-
-			if (($imgFileType == 'jpg') || ($imgFileType == 'png')) {
-				echo "<img src='images/" . $image . "' width='200'> ";
-			}
-		}
-	}
-	closedir($opendirectory);
-	//	}
-
-
-	###############################################
-	#print_r($row);
 
 	$advert = '
 		<div class="row">
 		<div class="col s12"><h2>' . $row2["title"] . '</h2></div>
 		<div class="col s12 m6">
-		<img  height="500" src="/dilaalsom/img/products/' . $row2["last_id"] . '/' . $row2["images"] . '" alt="Picture" >
+		<img  height="500" src="/dilaalsom/img/products/' . $row2["last_id"] . '/' . $row2["main_picture"] . '" alt="Picture" >
 		<div class="row">
 
 		<div class="col s12 m3">
 		
-		  <img src="' . $row2["images"] . '" alt="picture" class="materialboxed responsive-img">
-        </div>
-        <div class="col s12 m3 ">
-          <img src="https://source.unsplash.com/1600x900/?cameras" alt="" class="materialboxed responsive-img">
+		<img  src="/dilaalsom/img/products/' . $row2["last_id"] . '/' . $row2["picture1"] . '" alt=" "  class="materialboxed responsive-img" >
         </div>
         <div class="col s12 m3">
-          <img src="https://source.unsplash.com/1600x900/?electronics" alt="" class="materialboxed responsive-img">
+		  <img  src="/dilaalsom/img/products/' . $row2["last_id"] . '/' . $row2["picture2"] . '" alt=" " class="materialboxed responsive-img" >
+
         </div>
         <div class="col s12 m3">
-          <img src="https://source.unsplash.com/1600x900/?vinyl" alt="" class="materialboxed responsive-img">
+		<img  src="/dilaalsom/img/products/' . $row2["last_id"] . '/' . $row2["picture3"] . '" alt=" " class="materialboxed responsive-img" >
+        </div>
+        <div class="col s12 m3">
+		<img  src="/dilaalsom/img/products/' . $row2["last_id"] . '/' . $row2["picture4"] . '" alt=" " class="materialboxed responsive-img" >
         </div>
       </div>
 		</div>
@@ -141,13 +130,6 @@ function showAdvert($idadvert)
 		<div>';
 
 	if (isset($_SESSION['firstname'])) {
-		$advert .= '
-			<form action="" method="POST">
-			<label>Make an offer:</label>
-				 <div class="input-field">
-              <input type="number" name="offer" placeholder="Your offer">       
-            	<input type="submit" value="Place Offer" class="btn"></div>
-			</form>';
 	} else {
 		$advert .= '
 			<p class="contactven">To place an offer please login <a href="signup.php">sign up</a> or <a href="login.php">login</a></p>';
@@ -160,8 +142,6 @@ function showAdvert($idadvert)
 		<span class="wdth">Entered: </span>' . date("F d, Y", strtotime($row2["date_posted"])) . '<br/>
 		<span class="wdth">Ad Views: </span><b>' . $row2["ad_views"] . '</b><hr></div>
 		</div>';
-
-
 
 	'<div class="col s12 m6">
 		<div class="contact">
@@ -186,17 +166,27 @@ function showAdvert($idadvert)
 			<div class="col s12 m6">
 			<h4 class="firstmg">Message</h4>
 			<form action="mailer.php" method="post" name="infodet" class="infodet" id="infodet">
-			<input type="hidden" name="firstname" value="' . $_SESSION["firstname"] . '" />
-			<input type="hidden" name="lastname" value="' . $_SESSION["lastname"] . '" />
-			<input type="hidden" name="email" value="' . $_SESSION["email"] . '" />
-			<input type="hidden" name="emailseller" value="' . $row2["email"] . '" />
+			<input type="hidden" name="firstname" value="' . $row3["firstname"] . '" />
+			<input type="hidden" name="lastname" value="' . $row3["lastname"] . '" />
+			<input type="hidden" name="email" value="' . $row3["email"] . '" />
+			<input type="hidden" name="emailseller" value="' . $row3["email"] . '" />
 			<input type="hidden" name="title" value="' . $row2["title"] . '" />
-			<input type="hidden" name="idadvert" value="' . $row2["id"] . '"/>
+			<input type="hidden" name="idadvert" value="' . $row2["id_advert"] . '"/>
 			<textarea name="message" placeholder="Enter your query here"></textarea>
 			<button type="submit" class="btn">Send message</button>
 			</form></div></div>';
 		}
 	} else {
+
+
+		if ($row2["contact_byphone"] == 1) {
+			$advert .= '<div class="col s12 m6">
+			<h4 class="ph">Mobile</h4>
+			<div class="phnum">
+			<span class="wdth">Phone:</span> <b>' . $row3["phone"] . '</b><br/><br/><hr>
+			</div></div>';
+		}
+
 		$advert .= '
 			<div class="col s12 m6">
 			<h5 class="firstmg">Send Message</h5>
@@ -225,8 +215,17 @@ function showAdvert($idadvert)
 			</div>
 		';
 
+
 	return $advert;
 }
+//for testing purpose
+
+//$adv = showAdvert(27);
+//echo "hey";
+//echo $adv;
+
+//end of testing codes
+
 ?>
 
 

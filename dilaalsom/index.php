@@ -1,41 +1,42 @@
-<?php
-include('header.php');
-require('includes/search.php')
-?>
+  <?php
+  include('header.php');
+  require('includes/search.php')
+  ?>
 
-<!-- Section: Slider -->
-<section class="slider">
-  <ul class="slides">
-    <li>
-      <img src="img/watch.jpg">
-      <!-- random image -->
-      <div class="caption center-align">
-        <h2>Find your ideal product</h2>
-        <h5 class="light grey-text text-lighten-3 hide-on-small-only"> Find your ideal product Find your ideal product</h5>
-      </div>
-    </li>
-    <li>
-      <img src="img/headphones.jpg">
-      <!-- random image -->
-      <div class="caption left-align">
-        <h2>Easily place an Advertisment of your product</h2>
-        <h5 class="light grey-text text-lighten-3 hide-on-small-only">Easily place an Advertisment of your productEasily place an Advertisment of your product</h5>
-      </div>
-    </li>
-    <li>
-      <img src="img/somali.png">
-      <!-- random image -->
-      <div class="caption right-align">
-        <h2>Largest advertisment plateform in Somali</h2>
-        <h5 class="light grey-text text-lighten-3 hide-on-small-only"></h5>Largest advertisment plateform in somali>Largest advertisment plateform in somali</h5>
-      </div>
-    </li>
-  </ul>
-</section>
+  <!-- Section: Slider -->
+  <!-- Section: Slider -->
+  <section class="slider">
+    <ul class="slides">
+      <li>
+        <img src="img/headphones.jpg">
+        <!-- random image -->
+        <div class="caption center-align">
+          <h2>Find your ideal product</h2>
+          <h5 class="light grey-text text-lighten-3 hide-on-small-only"> Find your ideal product Find your ideal product</h5>
+        </div>
+      </li>
+      <li>
+        <img src="img/s.jpeg">
+        <!-- random image -->
+        <div class="caption left-align">
+          <h2>Easily place an Advertisment of your product</h2>
+          <h5 class="light grey-text text-lighten-3 hide-on-small-only">Easily place an Advertisment of your productEasily place an Advertisment of your product</h5>
+        </div>
+      </li>
+      <li>
+        <img src="img/som.png">
+        <!-- random image -->
+        <div class="caption right-align">
+          <h2>Largest advertisment plateform in Somali</h2>
+          <h5 class="light grey-text text-lighten-3 hide-on-small-only"></h5>Largest advertisment plateform in somali>Largest advertisment plateform in somali</h5>
+        </div>
+      </li>
+    </ul>
+  </section>
 
 
-<!-- Section: Icon Boxes -->
-<!--section class="section section-icons grey lighten-4 center">
+  <!-- Section: Icon Boxes -->
+  <!--section class="section section-icons grey lighten-4 center">
     <div class="container">
       <div class="row">
         <div class="col s12 m4">
@@ -66,55 +67,55 @@ require('includes/search.php')
 
 
 
-<!-- Section: Popular Products -->
-<section id="popular" class="section section-popular scrollspy">
-  <div class="container">
-    <div class="row">
-      <h4 class="center">
-        <span class="teal-text">Popular</span> Deals</h4>
+  <!-- Section: Popular Products -->
+  <section id="popular" class="section section-popular scrollspy">
+    <div class="container">
+      <div class="row">
+        <h4 class="center">
+          <span class="teal-text">Popular</span> Deals</h4>
 
 
-      <?php
-      echo $adverts;
-      ?>
+        <?php
+        echo $adverts;
+        ?>
 
-    </div>
-  </div>
-</section>
-
-<!-- Section: Icon Boxes2 
-<section class="section section-icons grey lighten-4 center">
-  <div class="container">
-    <div class="row">
-      <div class="col s12 m4">
-        <div class="card-panel">
-          <i class="material-icons medium teal-text">fingerprint
-          </i>
-          <h4>Secure</h4>
-          <!--p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, tempore?</p
-        </div>
-      </div>
-      <div class="col s12 m4">
-        <div class="card-panel">
-          <i class="material-icons medium teal-text">touch_app</i>
-          <h4>Easy to use</h4>
-          <!--p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, tempore?</p
-        </div>
-      </div>
-      <div class="col s12 m4">
-        <div class="card-panel">
-          <i class="material-icons medium teal-text">place</i>
-
-          <h4>anywhere</h4>
-          <!--p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, tempore?</p-->
-<!--  </div>
       </div>
     </div>
-  </div> 
-</section> -->
+  </section>
 
-<!-- Section: Follow -->
-<!--section class="section section-follow teal darken-2 white-text center">
+  <!-- Section: Icon Boxes2 -->
+  <section class="section section-icons grey lighten-4 center">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="card-panel">
+            <i class="material-icons medium teal-text">fingerprint
+            </i>
+            <h4>Secure</h4>
+            <!--p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, tempore?</p-->
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="card-panel">
+            <i class="material-icons medium teal-text">touch_app</i>
+            <h4>Easy to use</h4>
+            <!--p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, tempore?</p-->
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="card-panel">
+            <i class="material-icons medium teal-text">place</i>
+
+            <h4>anywhere</h4>
+            <!--p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, tempore?</p-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Follow -->
+  <!--section class="section section-follow teal darken-2 white-text center">
     <div class="container">
       <div class="row">
         <div class="col s12">
@@ -140,10 +141,10 @@ require('includes/search.php')
     </div>
   </section-->
 
-<!-- Section: Gallery-lightbox material plugin-variation on  scrollspy -->
-<!-- Section: 4 3 -column divs -->
-<section id="gallery" class="section section-gallery scrollspy">
-  <!--div class="container">
+  <!-- Section: Gallery-lightbox material plugin-variation on  scrollspy -->
+  <!-- Section: 4 3 -column divs -->
+  <section id="gallery" class="section section-gallery scrollspy">
+    <!--div class="container">
       <h4 class="center">
         <span class="teal-text">Product</span> Gallery
       </h4>
@@ -161,6 +162,7 @@ require('includes/search.php')
           <img src="https://source.unsplash.com/1600x900/?vinyl" alt="" class="materialboxed responsive-img">
         </div>
       </div>
+
       <div class="row">
         <div class="col s12 m3">
           <img src="https://source.unsplash.com/1600x900/?bass" alt="" class="materialboxed responsive-img">
@@ -175,6 +177,7 @@ require('includes/search.php')
           <img src="https://source.unsplash.com/1600x900/?computers" alt="" class="materialboxed responsive-img">
         </div>
       </div>
+
       <div class="row">
         <div class="col s12 m3">
           <img src="https://source.unsplash.com/1600x900/?drum" alt="" class="materialboxed responsive-img">
@@ -190,10 +193,10 @@ require('includes/search.php')
         </div>
       </div>
     </div-->
-</section>
+  </section>
 
-<!-- Section: Contact -->
-<!--section id="contact" class="section section-contact scrollspy">
+  <!-- Section: Contact -->
+  <!--section id="contact" class="section section-contact scrollspy">
     <div class="container">
       <div class="row">
         <div class="col s12 m6">
@@ -235,6 +238,6 @@ require('includes/search.php')
     </div>
   </section-->
 
-<?php
-include('footer.php');
-?>
+  <?php
+  include('footer.php');
+  ?>

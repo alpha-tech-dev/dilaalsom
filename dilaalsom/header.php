@@ -55,7 +55,9 @@ include 'includes/function.php';
   </script>
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DilaalSom</title>
+  <title>
+
+    DilaalSom</title>
   <meta name="title" content=" Dilaal Somali Advertsiment Market" />
   <meta name="description" content="Largest Advertisment platorm in Somali" />
   <meta http-equiv="Pragma" content="no-cache">

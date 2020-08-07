@@ -13,7 +13,13 @@ if (isset($_GET["category"])) {
 	$cat	= 	"";
 }
 
-$query = "SELECT * FROM advertisements";
+$query = "SELECT a.*, c.county, b.name FROM advertisements a
+			INNER JOIN counties c ON (a.location = c.id_county)
+			INNER JOIN locations b ON (a.district = b.id)
+			WHERE a.title LIKE '%" . $q . "%' 
+			AND a.id_category LIKE '%" . $cat . "%'
+			ORDER BY a.id_advert DESC;";
+
 
 
 if (!$result = mysqli_query($link, $query)) {
@@ -23,7 +29,7 @@ if (!$result = mysqli_query($link, $query)) {
 
 $numrows = mysqli_num_rows($result);
 if (mysqli_num_rows($result) < 1) {
-	$adverts = "not results";
+	$adverts = "no results";
 } else {
 	$adverts = "";
 	while ($row = mysqli_fetch_array($result)) {
@@ -31,17 +37,18 @@ if (mysqli_num_rows($result) < 1) {
 						<div class="card">
 							<span class=""> ' . $row["title"] . '</span>
 						   <div class="card-image">
-						   <img  height="250" src="/dilaalsom/img/products/' . $row["last_id"] . '/' . $row["images"] . '" >
+						   <img  height="250" src="/dilaalsom/img/products/' . $row["last_id"] . '/' . $row["main_picture"] . '" >
 						  </div>
 						  
 						  
 						  <div class="card-content">
-               				<div class="price"> Price: $' . $row["price"] . '</div>
-							<div class="state">State: ' . $row["state"] . '</div>	
-							<div class="district">District: ' . $row["district"] . '</div>	
+							   <div class="price"> Price: $' . $row["price"] . '</div>
+							   <div class="county">County: ' . $row["county"] . '</div>	
+							   <div class="county">District: ' . $row["name"] . '</div>	
+
               			</div>
               			<div class="card-action">
-                		<a href="viewad.php?idadvert=' . $row["id"] . '" class="viewad">View Ad</a>
+                		<a href="viewad.php?idadvert=' . $row["id_advert"] . '" class="viewad">View Ad</a>
               		</div></div></div>';
 	}
 }
