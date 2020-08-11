@@ -14,11 +14,11 @@ if (isset($_GET["category"])) {
 }
 
 $query = "SELECT a.*, c.county, b.name FROM advertisements a
-			INNER JOIN counties c ON (a.location = c.id_county)
-			INNER JOIN locations b ON (a.district = b.id)
+			INNER JOIN counties c ON (a.county = c.id_county)
+			INNER JOIN districts b ON (a.district = b.id)
 			WHERE a.title LIKE '%" . $q . "%' 
-			AND a.id_category LIKE '%" . $cat . "%'
-			ORDER BY a.id_advert DESC;";
+			AND a.id_category LIKE '%" . $cat . "%' AND a.status LIKE '%" . 'approved' . "%' 
+			ORDER BY a.id_advert DESC ;";
 
 
 

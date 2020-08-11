@@ -2,6 +2,41 @@
 
 //require 'dbconnect.php';
 
+
+if (isset($_GET["id"])) {
+
+	require 'dbconnect.php';
+	$county = $_GET['id'];
+	$_SESSION["countysel"] = $id;
+}
+
+function displayDist($id)
+{
+	global $link;
+	//	$query = "SELECT * FROM districts;";
+	$query = "SELECT * FROM `districts` where `county_id` =$id;";
+
+	$result = mysqli_query($link, $query);
+
+	$content = "";
+	#
+	/* get the number of rows of an array 
+		echo mysqli_num_rows($result);
+	*/
+	#exit();
+
+	while ($row = mysqli_fetch_array($result)) {
+		if ($id == $row["county_id"]) {
+			$selected = "selected='selected' ";
+		} else {
+			$selected = "";
+		}
+
+		$content .= "<option value='" . $row["county_id"] . "' " . $selected . ">" . $row["name"] . "</option>";
+	}
+	return $content;
+}
+
 function displayCounties($countysel)
 {
 	global $link;
@@ -137,8 +172,10 @@ function showAdvert($idadvert)
 
 	$advert .= '   
 		</div>
-		<div class="infoad"><span class="wdthl">Seller:</span> <b> ' . $row3["firstname"] . '</b><br/>
-		<span class="wdth">Location:</span> <b>' . $row3["county"] . '</b><br/><br/><hr>
+		<div class="infoad"><span class="wdthl">Seller:</span> <b> ' . $row3["firstname"] . '</b>
+		<a href="https://localhost/dilaalsom/profile.php">  View seller profile</a>
+		<br/>
+		<span class="wdth">Location:</span> <b>' . $row2["county"] . '</b><br/><br/><hr>
 		<span class="wdth">Entered: </span>' . date("F d, Y", strtotime($row2["date_posted"])) . '<br/>
 		<span class="wdth">Ad Views: </span><b>' . $row2["ad_views"] . '</b><hr></div>
 		</div>';
@@ -153,7 +190,7 @@ function showAdvert($idadvert)
 			$advert .= '<div class="col s12 m6">
 		<h4 class="ph">Mobile</h4>
 		<div class="phnum">
-		<p class="numberstyle">' . $row2["phone"] . '</p>
+		<p class="numberstyle">' . $row3["phone"] . '</p>
 		</div></div>';
 		}
 
