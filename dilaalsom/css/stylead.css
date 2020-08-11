@@ -439,6 +439,7 @@ body {
 		.button {
 		width:100px;
 		height:40px;
+		background-color:#E87E24;
 		color:white;
 		font-weight:bold;
 		border-radius:6px;

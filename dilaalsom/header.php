@@ -151,7 +151,6 @@ include 'includes/function.php';
 
 
   <meta name="generator" content="Osclass 3.8.0" />
-  <meta property="og:site_name" content="SALAMA MARKET" />
   <meta property="og:locale" content="en_US" />
   <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700|Encode+Sans+Condensed:600,700&display=swap" rel="stylesheet" type="text/css" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />

@@ -231,14 +231,16 @@
 					mysqli_query($link, $queryupd1);
 					//echo $queryupd1;
 					//echo '<img  height="200" src="', $imagesDirectory, '/', $file, '" alt="Picture" >';
+
 				}
 			}
-		} else
+		} else {
 			echo ("error :" . mysqli_error($link));
-
-
-		#echo($query);
-		header("location:index.php");
+			#echo($query);
+			header("location:index.php");
+		}
+		echo "Your advert have been sucesfully added ";
+		header("location:addedads.php?last_id=$last_id");
 	}
 
 

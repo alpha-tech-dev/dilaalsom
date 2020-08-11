@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 07, 2020 at 02:29 PM
+-- Generation Time: Aug 11, 2020 at 08:06 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -37,7 +37,7 @@ CREATE TABLE `advertisements` (
   `condetion` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `transection` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `owner` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT 'pending',
   `date_posted` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -47,10 +47,10 @@ CREATE TABLE `advertisements` (
   `id_category` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_user` int(11) NOT NULL,
   `ad_type` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `message_center` int(11) NOT NULL DEFAULT 1,
-  `contact_byphone` int(11) NOT NULL DEFAULT 1,
+  `message_center` int(11) DEFAULT 1,
+  `contact_byphone` int(11) DEFAULT 1,
   `ad_views` int(11) DEFAULT 0,
-  `location` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `county` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
   `picture1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `picture2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `picture3` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -61,8 +61,11 @@ CREATE TABLE `advertisements` (
 -- Dumping data for table `advertisements`
 --
 
-INSERT INTO `advertisements` (`id_advert`, `title`, `description`, `price`, `free`, `deal`, `condetion`, `transection`, `owner`, `status`, `date_posted`, `updated_at`, `deleted_at`, `district`, `main_picture`, `last_id`, `id_category`, `id_user`, `ad_type`, `message_center`, `contact_byphone`, `ad_views`, `location`, `picture1`, `picture2`, `picture3`, `picture4`) VALUES
-(74, 'Test title', ' SAAAA', '1200.00', NULL, NULL, NULL, NULL, NULL, NULL, '2020-08-07 11:56:35', NULL, NULL, '1', 'ads-1596801395.png', 1588327225, '1', 20, 'S', 1, 1, 23, '7', 'ads-1596801395.jpeg', 'ads-1596801395.png', NULL, NULL);
+INSERT INTO `advertisements` (`id_advert`, `title`, `description`, `price`, `free`, `deal`, `condetion`, `transection`, `owner`, `status`, `date_posted`, `updated_at`, `deleted_at`, `district`, `main_picture`, `last_id`, `id_category`, `id_user`, `ad_type`, `message_center`, `contact_byphone`, `ad_views`, `county`, `picture1`, `picture2`, `picture3`, `picture4`) VALUES
+(74, 'Test title', ' SAAAA', '1200.00', NULL, NULL, NULL, NULL, NULL, 'approved', '2020-08-07 11:56:35', NULL, NULL, '1', 'ads-1596801395.png', 1588327225, '1', 20, 'S', 1, 1, 31, '7', 'ads-1596801395.jpeg', 'ads-1596801395.png', NULL, NULL),
+(75, 'Samsung  S9', ' Samsung  S9Samsung  S9Samsung  S9Samsung  S9Samsung  S9Samsung  S9Samsung  S9Samsung  S9Samsung  S9Samsung  S9', '12000.00', NULL, NULL, NULL, NULL, NULL, 'approved', '2020-08-08 20:24:38', NULL, NULL, '2', 'majeed-1596918278.jpeg', 868266650, '1', 8, 'S', 1, 1, 25, '6', 'ads-1596918278.png', 'majeed-1596918278.jpeg', NULL, NULL),
+(76, 'd`', ' echo $queryupd1;echo $queryupd1;echo $queryupd1;', '2.00', NULL, NULL, NULL, NULL, NULL, 'pending', '2020-08-08 20:36:29', NULL, NULL, '1', 'ads-1596918989.jpeg', 2113824045, '1', 8, 'S', 1, 1, 0, '2', 'ads-1596918989.jpeg', NULL, NULL, NULL),
+(77, 'eeeeeee', ' dddddddd', '1111111.00', NULL, NULL, NULL, NULL, NULL, 'pending', '2020-08-08 22:13:59', NULL, NULL, '1', 'adss-1596924839.jpeg', 1334482745, '1', 8, 'S', 1, 1, 0, '7', 'adss-1596924839.jpeg', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -146,24 +149,35 @@ INSERT INTO `counties` (`id_county`, `county`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `locations`
+-- Table structure for table `districts`
 --
 
-CREATE TABLE `locations` (
+CREATE TABLE `districts` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `county_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `locations`
+-- Dumping data for table `districts`
 --
 
-INSERT INTO `locations` (`id`, `name`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'North Mogadishu', NULL, NULL, NULL),
-(2, 'South mogadishu', NULL, NULL, NULL);
+INSERT INTO `districts` (`id`, `name`, `created_at`, `updated_at`, `deleted_at`, `county_id`) VALUES
+(1, 'North Mogadishu', NULL, NULL, NULL, 7),
+(2, 'District waterfood1', NULL, NULL, NULL, 7),
+(3, 'Distric1', NULL, NULL, NULL, 1),
+(4, 'Distric1', NULL, NULL, NULL, 1),
+(5, 'Distric1a', NULL, NULL, NULL, 1),
+(6, 'Distric1', NULL, NULL, NULL, 1),
+(7, 'Distric3', NULL, NULL, NULL, 1),
+(8, 'Distric5', NULL, NULL, NULL, 1),
+(9, 'Distric5', NULL, NULL, NULL, 1),
+(10, 'Distric6', NULL, NULL, NULL, 1),
+(11, 'Distric6', NULL, NULL, NULL, 1),
+(12, 'Distric7', NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -497,7 +511,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`, `firstname`, `lastname`, `phone`, `profile_pic`, `county`, `id_county`) VALUES
-(8, 'a@gmail.com', NULL, 'a@gmail.com', NULL, '2020-08-07 11:01:30', NULL, NULL, 'FN', 'LN', '01999999', NULL, NULL, '4'),
+(8, 'a@gmail.com', NULL, 'a@gmail.com', NULL, '2020-08-07 11:01:30', NULL, NULL, 'FN', 'LN', '0997173749', 'img/users/202008082203358.png', NULL, '4'),
 (20, 'ali@gmail.com', NULL, 'ali@gmail.com', NULL, '2020-08-07 12:17:08', NULL, NULL, 'ALi', 'bak', '129991000', NULL, NULL, '1');
 
 --
@@ -537,9 +551,9 @@ ALTER TABLE `counties`
   ADD PRIMARY KEY (`id_county`);
 
 --
--- Indexes for table `locations`
+-- Indexes for table `districts`
 --
-ALTER TABLE `locations`
+ALTER TABLE `districts`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -628,7 +642,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `advertisements`
 --
 ALTER TABLE `advertisements`
-  MODIFY `id_advert` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id_advert` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -643,10 +657,10 @@ ALTER TABLE `counties`
   MODIFY `id_county` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `locations`
+-- AUTO_INCREMENT for table `districts`
 --
-ALTER TABLE `locations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `districts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `media`
